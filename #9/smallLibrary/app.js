@@ -4,7 +4,7 @@ const mongoose=require('mongoose');
 const bookRouter = require("./routers/bookrouters");
 
 //mongoDB connection string
-const dbURL="mongodb+srv://webprogrammer:webpgm1234@cluster0.a3hbj.mongodb.net/WebDB?retryWrites=true&w=majority"
+const dbURL=""
 // create express app
 const app = express();
 app.set('view engine', 'ejs');
