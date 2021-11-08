@@ -1,0 +1,34 @@
+body {
+    margin: 0px;
+}
+header { 
+    background: #F0E68C;
+}
+header h1 {
+    margin-top: 0px;
+    text-align: center;
+}
+header p {
+    margin-bottom: 0px;
+}
+section {
+    margin: 22px 12px 11px 11px;
+    background: pink;
+    padding-bottom: 18px;
+}
+form {
+    margin-top: 18px;
+}
+form p {
+    display: inline;
+}
+#grade__arti form {
+    margin-top: 0px;
+}
+footer {
+    background: #9370D8;
+}
+footer p {
+    margin: 0px;
+    padding: 18px 0px;
+}

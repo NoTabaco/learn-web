@@ -1,0 +1,9 @@
+body {
+    margin: 0px 15px;
+}
+img {
+    border-width: 15px;
+    border-style: solid;
+    border-image: url("https://i2.wp.com/creativecertificates.com/wp-content/uploads/2015/10/free-borders-and-frames.jpg") 10 round;
+    padding: 5px;
+}

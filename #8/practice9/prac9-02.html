@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>라디오 버튼과 이미지 출력</title>
+    <script>
+      function drawImage() {
+        const fruit = document.getElementsByName("fruit");
+        const img = document.getElementById("fruitImage");
+        for(let i = 0; i < fruit.length; i++) {
+          if(fruit[i].checked == true) {
+            return img.src = fruit[i].value;
+          }
+        }
+      }
+    </script>
+</head>
+<body onload="drawImage()">
+  <h3>라디오 버튼을 클릭하면 이미지를 출력합니다.</h3>
+  <hr>
+  <form onchange="drawImage()">
+    <label><input type="radio" name="fruit" value="https://image.shutterstock.com/image-photo/single-banana-isolated-260nw-575528569.jpg">바나나</label>
+    <label><input type="radio" name="fruit" value="https://image.shutterstock.com/image-photo/mango-leaf-fresh-yellow-on-260nw-1115987162.jpg">망고</label>
+    <label><input type="radio" name="fruit" value="https://image.shutterstock.com/image-vector/vector-illustration-apple-260nw-505576972.jpg" checked>사과</label>
+  </form>
+  <img id="fruitImage" src="" alt="">
+</body>
+</html>

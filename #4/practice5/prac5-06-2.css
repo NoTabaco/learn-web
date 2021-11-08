@@ -1,0 +1,12 @@
+body {
+    margin: 0px 15px;
+}
+@keyframes halfRotate {
+    from {transform: rotate(-90deg);}
+    to { transform: rotate(90deg);}
+}
+img {
+    animation-name: halfRotate;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}

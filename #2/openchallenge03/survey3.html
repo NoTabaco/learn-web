@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소프트웨어 기술 설문조사</title>
+    <style>
+        body {
+            margin: 0px 15px;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        form:nth-child(1) {
+            margin-top: 20px;
+        }
+        form:last-child {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>설문지</h1>
+        <p>소프트웨어 기술에 대한 의견을 듣습니다. 많은 참여 부탁드립니다.</p>
+    </header>
+    <hr>
+    <section>
+        <!-- Grade radio button-->
+        <article id="grade__arti">
+            <form>
+                학년 <label> 
+                        <input type="radio" name="grade" value="1" checked>1학년
+                    </label>
+                    <label>
+                        <input type="radio" name="grade" value="2">2학년
+                    </label>
+                    <label>
+                        <input type="radio" name="grade" value="3">3학년
+                    </label>
+                    <label>
+                        <input type="radio" name="grade" value="4">4학년
+                    </label><br>
+            </form>
+        </article>
+        <!-- Gender radio button-->
+        <article id="gender__arti">
+            <form>
+                성별 <label> 
+                        <input type="radio" name="gender" value="male">남
+                    </label>
+                    <label>
+                        <input type="radio" name="gender" value="female">여
+                    </label><br>
+            </form>
+        </article>
+        <!-- InterestPart ComboBox-->
+        <article id="interestPart__arti">
+            <form>
+                관심 분야 <input type="text" list="interestPart"><br>
+                                <datalist id="interestPart">
+                                    <option value="어플리케이션">
+                                    <option value="모바일 소프트웨어">
+                                    <option value="보안">
+                                </datalist>
+            </form>
+        </article>
+        <!-- Career CheckBox-->
+        <article id="career__arti">
+            <form>
+                진로 <label> 
+                        <input type="checkbox" value="development" checked>개발
+                    </label>
+                    <label>
+                        <input type="checkbox" value="planning">기획
+                    </label>
+                    <label>
+                        <input type="checkbox" value="marketing">영업
+                    </label>
+                    <label>
+                        <input type="checkbox" value="founding">창업
+                    </label><br>
+            </form>
+        </article>
+        <!-- Comment textarea-->
+        <article id="comment__arti">
+            <form>
+                    남기고 싶은 말<br>
+                    <textarea cols="50" rows="10" placeholder="글을 남겨주세요"></textarea>
+            </form>
+        </article>
+    </section>
+    <footer>
+        <span>Copyright 2020 by kitae</span>
+    </footer>
+</body>
+</html>

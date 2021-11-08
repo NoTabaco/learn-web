@@ -1,0 +1,11 @@
+body {
+    margin: 0px 15px;
+}
+#fixed {
+    position: fixed;
+    width: 100%;
+    background: #9370D8;
+    color: #000080;
+    bottom: 5px;
+    left: 3px;
+}

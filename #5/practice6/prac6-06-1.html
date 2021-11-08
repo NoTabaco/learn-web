@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1</title>
+</head>
+<body>
+  <script>
+      function big(firstInput, secondInput){
+          const firstNumber = parseInt(firstInput);
+          const secondNumber = parseInt(secondInput);
+          if(firstNumber  > secondNumber) {
+              return firstNumber;
+          } else {
+              return secondNumber;
+          }
+      }
+  </script>
+  <script>
+      const b = big("625", "555");
+      document.write("큰수=" + b);
+  </script>
+</body>
+</html>

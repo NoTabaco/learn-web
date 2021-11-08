@@ -1,0 +1,16 @@
+body {
+    margin: 0px 15px;
+}
+
+p {
+    background: aliceblue;
+    color: brown;
+    font-family: Lucida Console;
+    font-size: 10px;
+    text-indent: 1em;
+}
+
+span {
+    font-size: 1.5em;
+    text-decoration: underline; 
+}

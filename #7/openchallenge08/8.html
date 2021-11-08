@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>갬블링 게임</title>
+    <style>
+        #number__container {
+            display: flex;
+            width: 250px;
+            height: 100px;
+            margin-bottom: 18px;
+            justify-content: space-around;
+            align-items: center;
+            border: 1px solid darkviolet;
+            background: lightgoldenrodyellow;
+        }
+        #randomNumber {
+            font-size: 75px;
+            font-weight: bold;
+            font-family: consolas;
+            font-style: italic;
+            color: navy;
+        }
+    </style>
+    <script>
+        let checkArray = [0, 0, 0];
+        let clickCount = 0;
+        function randomInt(){
+            return Math.floor(Math.random()*3);
+        }
+        function handleNumber(object){
+            object.innerText = randomInt();
+            object.onclick = null;
+            checkArray[clickCount] = parseInt(object.innerText);
+            clickCount++;
+            if(clickCount == 3){
+                resultCheck();
+            }
+        }
+        function resultCheck(){
+            const bodyParent = document.getElementById("parent");
+            const newSpan = document.createElement("span");
+            const resetP =  document.querySelectorAll("#randomNumber");
+            if(checkArray[0] == checkArray[1] && checkArray[0] == checkArray[2]){
+                newSpan.innerHTML = "Success(click here to do again)";
+            } else {
+                newSpan.innerHTML = "Fail(click here to do again)";
+            }
+            newSpan.style.color = "mediumorchid";
+            newSpan.style.font = "italic 25px Lucida console";
+            newSpan.addEventListener("click", 
+            function () {
+                const parentOfNewSpan = this.parentElement;
+                parentOfNewSpan.removeChild(this);  
+                resetP.forEach(function(element)  {
+                   element.innerText = 0;
+                   element.onclick = function (){
+                    handleNumber(this);
+                   }
+                });
+                checkArray = [0, 0, 0];
+                clickCount = 0;
+            });
+            bodyParent.appendChild(newSpan);
+        }
+    </script>
+</head>
+<body id="parent">
+  <h3>갬블링 게임</h3>
+  <p>각 숫자를 클릭하면 0에서 2사이의 난수로 바뀝니다. 모두 같은 수가 나오면 승리합니다.</p>
+  <hr>
+  <div id="number__container">
+      <p id="randomNumber" onclick="handleNumber(this)">0</p>
+      <p id="randomNumber" onclick="handleNumber(this)">0</p>
+      <p id="randomNumber" onclick="handleNumber(this)">0</p>
+  </div>
+</body>
+</html>

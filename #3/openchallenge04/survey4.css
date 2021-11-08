@@ -1,0 +1,38 @@
+body {
+    margin: 0px 15px;
+    background-color: aliceblue;
+}
+header {
+    border-bottom: 1px solid #2f2f2f;
+}
+header h1 {
+    color: brown;
+    text-align: center;
+}
+p,
+label,
+footer {
+    font-family: 휴먼편지체, serif;
+    font-size: 1em;
+    text-indent: 1em;
+}
+section {
+    text-indent: 1em;
+    margin: 0px 13px;
+    background: pink;
+}
+form {
+    margin-top: 20px;
+}
+form:last-child {
+    margin-bottom: 18px;
+}
+form h3 {
+    display: inline;
+    color: mediumblue;
+    font-size: 19px;
+}
+footer {
+    background: orange;
+    border-radius: 10px;
+}

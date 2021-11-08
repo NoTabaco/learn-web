@@ -1,0 +1,12 @@
+body {
+    margin: 0px 15px;
+}
+ul {
+    background: url("https://upload.wikimedia.org/wikipedia/commons/3/34/All_colonies_blank_map.png") center center/1500px 110px no-repeat;
+    color: #0000CD;
+    padding-right: 10px;
+    list-style-type: square;
+}
+ul li:hover {
+    background: yellowgreen;
+}

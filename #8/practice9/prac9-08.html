@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 객체의 target</title>
+    <script>
+      window.onload = function() {
+        const li = document.getElementsByTagName("li");
+        const normalFont = 1.0 + "em";
+        const sizeUpFont = 1.3 + "em";
+        let declineObject = [];
+        let index = 0;
+        for(let i = 0; i < li.length; i++){
+        li[i].addEventListener("mousedown", function(){
+          li[i].style.fontSize = sizeUpFont;
+          declineObject[index] = li[i];
+          index++;
+          if(index == 2){
+            if(declineObject[0] != declineObject[1]){
+            declineObject[0].style.fontSize = normalFont;
+            declineObject[0] = declineObject[1];
+            index = 1;
+            } else {
+              declineObject[0].style.fontSize = normalFont;
+              declineObject = [];
+              index = 0;
+            }
+          }
+        });
+        }
+      }
+    </script>
+</head>
+<body>
+  <h3>아이템을 클릭하면 1.3배 크기로</h3>
+  <hr>
+  <p>여름 방학 때 하고 싶은 것들</p>
+  <ul>
+    <li>자전거로 대한민국 일주</li>
+    <li>책 100권 읽기</li>
+    <li>철인 3종 경기 준비</li>
+    <li>자바스크립트 정복</li>
+  </ul>
+</body>
+</html>

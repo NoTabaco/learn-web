@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>산수를 풀어 봅시다.</title>
+    <style>
+      p {
+        margin: 0px;
+      }
+      label, input[type="button"] {
+        display: inline-block;
+        margin-left: 10px;
+        margin-bottom: 10px;
+      }
+      span {
+        display: inline-block;
+        width: 100px;
+      }
+      input[type="button"] {
+        margin-right: 54px;
+      }
+    </style>
+    <script>
+      let operator = ["+", "-", "*", "/"];
+      let express;
+      let answer;
+      let input;
+      let count = 0;
+      let finalResult;
+      let setTime = 10;
+      let startTimer;
+      // 0 ~ 50
+      function randomNumber(){
+        return Math.floor(Math.random() * 51);
+      }
+      // + - * / 0 ~ 3 of index
+      function randomOperator(){
+        return Math.floor(Math.random() * 4);
+      }
+      function countTime(object, time){
+        let remainTime = time - 1;
+        object.innerText = `남은 시간 ${remainTime}`;     
+        if(remainTime == 0){
+          clearTimeout(startTimer);
+          score();
+        } else {
+          startTimer = setTimeout(countTime, 1000, object, remainTime);
+        }
+      }
+      function score(){
+        for(let j = 0; j < express.length - 1; j++){
+            if(input[j].value == answer[j]){
+              count++;
+            } else {
+              express[j].style.textDecoration = "line-through";
+            }
+            input[j].value = "";
+          }
+          finalResult.innerHTML = count;
+          count = 0;
+      }
+      function resetProperty(){
+        finalResult.innerHTML = count;
+        for(let k = 0; k < express.length - 1; k++){
+          express[k].style.textDecoration = "none";
+        }
+      }
+      function process(){
+        const remainingTime = document.getElementById("remaining_time");
+        finalResult = express[express.length - 1];
+        for(let i = 0; i < express.length - 1; i++){
+          express[i].innerHTML = `${randomNumber()} ${operator[randomOperator()]} ${randomNumber()}`
+          answer[i] = Math.floor(eval(express[i].innerHTML));
+        }
+        finalResult.innerHTML = count;
+        remainingTime.innerText = `남은 시간 ${setTime}`;
+        startTimer = setTimeout(countTime, 1000, remainingTime, setTime);
+      }
+      function start(){
+        express = document.querySelectorAll("span");
+        answer = new Array(express.length - 1);
+        input = document.querySelectorAll("input[type=text]");
+        const reset = document.querySelector("input[type=button]");
+        process();
+        reset.addEventListener("click", function(){
+            resetProperty();
+            process();
+        })
+      }
+    </script>
+</head>
+<body onload="start()">
+  <h3>산수 문제를 풀어 봅시다.</h3>
+  <p>문제는 자동으로 생성되며, 10초가 지나면 자동 채점됩니다.</p>
+  <p id="remaining_time"></p>
+  <hr>
+  <form>
+    <label><span></span><input type="text" value="" size="10"></label><br>
+    <label><span></span><input type="text" value="" size="10"></label><br>
+    <label><span></span><input type="text" value="" size="10"></label><br>
+    <label><span></span><input type="text" value="" size="10"></label><br>
+    <input type="button" value="다시"><span>0</span>
+  </form>
+</body>
+</html>

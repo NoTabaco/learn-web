@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>눈 내리는 샤갈의 마을</title>
+    <style>
+    body{
+      background-image: url("https://www.freecodecamp.org/news/content/images/2020/04/w-qjCHPZbeXCQ-unsplash.jpg");
+      background-size: 100%;
+      background-repeat: no-repeat;
+      margin: 0px;
+    }  
+    div {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background-image: url("https://i.pinimg.com/originals/8e/1e/b4/8e1eb4c2847dd29f82e2a28ddcbc4642.jpg");
+      background-size: 30px 30px;
+      background-repeat: no-repeat;
+    }
+    </style>
+    <script>
+       // position: (0, 0) ~ (1505, 685);
+      function randomLeft(){
+        return Math.floor(Math.random() * 1506);
+      }
+      function randomTop(){
+        return Math.floor(Math.random() * 686);
+      }
+    </script>
+</head>
+<body>
+  <script>
+    const body = document.querySelector("body");
+    let checkArray = new Array(30);
+    checkArray.fill(false);
+    function createDiv(id){
+        const newDiv = document.createElement("div");
+        newDiv.setAttribute("id", `${id}`);
+        newDiv.style.left = `${randomLeft()}px`;
+        newDiv.style.top = `${randomTop()}px`;
+        if(checkArray[id] == true){
+          newDiv.style.top = `0px`;
+        }
+        body.appendChild(newDiv);
+      } 
+    for(let i = 0; i < 30; i++){
+        createDiv(i);
+    }
+  </script>
+</body>
+<script>
+    function changePosition(){
+      const divArray = document.querySelectorAll("div");
+      for(let j = 0; j < divArray.length; j++){
+      divArray[j].style.top = `${divArray[j].offsetTop + 10}px`;
+      if(divArray[j].offsetTop > 690){
+        const id = divArray[j].id
+        checkArray[id] = true;
+        const parent = divArray[j].parentElement;
+        parent.removeChild(divArray[j]);
+        createDiv(id);
+      }
+    }
+  }
+  setInterval(`changePosition()`, 100);
+</script>
+</html>

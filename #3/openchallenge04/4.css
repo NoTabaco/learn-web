@@ -1,0 +1,39 @@
+body {
+    margin: 0px 15px;
+    background-color: aliceblue;
+}
+/* In the example, removed display because it is not in display state */
+audio {
+    display: none;
+}
+header {
+    border-bottom: 1px solid #2f2f2f;
+}
+header h1 {
+    color: brown;
+    text-align: center;
+}
+ul {
+    border: 1px dotted #2f2f2f;
+}
+a {
+    text-decoration: none;
+}
+p {
+    font-family: 휴먼편지체, serif;
+    font-size: 1em;
+    text-indent: 1em;
+}
+h2,
+h2 a {
+    color: mediumblue;
+    text-shadow: 3px 3px 5px royalblue;
+}
+footer {
+    background: orange;
+    border-radius: 10px;
+}
+li a, 
+p a {
+    color: midnightblue;
+}

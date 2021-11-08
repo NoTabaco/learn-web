@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계산기 만들기</title>
+    <style>
+       form {
+          width: 425px;
+       }
+       input[type="text"]{
+         display: block;
+         width: 100%;
+       }
+       input[type="button"]{
+         display: inline-block;
+         margin-top: 10px;
+         margin-left: 10px;
+         margin-right: 10px;
+         padding: 0px 15px;
+         width: 85px;
+         height: 25px;
+       }
+    </style>
+    <script>
+       const calculatorValue = ["BACK", "CE", "C", "=",
+                                7, 8, 9, "/",
+                                4, 5, 6, "*",
+                                1, 2, 3, "-",
+                                0, "+", "NONE", "NONE"];
+    </script>
+</head>
+<body>
+<h3>계산기 만들기</h3>
+<hr>
+   <form>
+      <input type="text" value="0">
+      <script>
+         for(let i = 0; i < calculatorValue.length; i++){
+            document.write(`<input type=button value=${calculatorValue[i]}>`);
+         }
+      </script>
+   </form>
+</body>
+<script>
+   const button = document.querySelectorAll("input[type=button]");
+   const text = document.querySelector("input[type=text]");
+   let addCount = 0;
+   let backArray = [];
+   let backArrayIndex = 0;
+   let equalTrigger = false;
+   button.forEach(function(element) {
+      if(element.value == "BACK"){
+         element.addEventListener("mouseup", function(){
+               if(equalTrigger == true){
+                  backArrayIndex = 0;
+                  backArray[backArrayIndex] = parseInt(text.value);
+                  text.value = Math.floor(backArray[backArrayIndex] /= 10);
+                  if (text.value == 0){
+                        text.value = "";
+                        equalTrigger = false;
+                        return;
+                     }
+                  while(backArray[backArrayIndex] > 0){
+                     return;
+                  }
+               }
+               backArrayIndex--;  
+               text.value = backArray[backArrayIndex];
+               if(text.value == "undefined" || backArrayIndex < 0){
+                  text.value = ""; 
+                  backArrayIndex = -1;
+               }
+         });
+      } else if(element.value == "CE" || element.value == "C"){
+         element.addEventListener("mouseup", function(){   
+            text.value = 0;
+            addCount = 0;
+            backArray = [];
+            backArrayIndex = 0;
+            equalTrigger = false;
+         });
+      } else if(element.value == "NONE"){
+         return;
+      } else if(element.value == "="){
+         element.addEventListener("mouseup", function(){
+            text.value = eval(text.value);
+            equalTrigger = true;
+            addCount = 0;
+         })
+      } else {
+         element.addEventListener("mouseup", function(){
+            if(addCount == 0 && text.value == 0){
+               text.value = "";
+               addCount = 1;
+            } else if(backArrayIndex < 0){
+               backArrayIndex = -1;
+            }
+            text.value += element.value;
+            backArrayIndex++; 
+            backArray[backArrayIndex] = text.value; 
+         });
+      }
+   })
+</script>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transform:rotate()</title>
+</head>
+<body>
+  <h3>클릭하면 2,3,4배로 옆으로 늘어납니다.</h3>
+  <hr>
+  <img src="https://lightbox-prod.imgix.net/images/uploads/1600126646614-lxl-spongebob-squarepants-s11-cc2.jpg" width="300px" height="250px" onclick="changeSize(this)">
+</body>
+<script>
+    let size = 2;
+    function changeSize(object){
+      object.style.transform=`scale(${size},1)`;
+      size++;
+    }
+</script>
+</html>

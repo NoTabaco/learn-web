@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="kr">
+    <%- include("./partials/head.ejs") %>
+    <body>
+        <%- include("./partials/nav.ejs") %>
+        <div class="create content">
+            <form action="/books" method="POST">
+                <label for="title"  >책 제목</label>
+                <input type="text" id="title" name="title" required>
+                <label for="author">저자</label>
+                <input type="text" id="author" name="author" required>
+                <label for="summary">요약</label>
+                <textarea id="summary" name="summary" required></textarea>
+                <button> 추가하기</button>
+            </form>
+        </div>
+        <%- include("./partials/footer.ejs") %>
+    </body>
+</html>

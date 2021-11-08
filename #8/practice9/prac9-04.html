@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>onmousemove</title>
+</head>
+<body>
+  <h3>이미지 커서 만들기</h3>
+  <hr>
+  <p>마우스를 움직이면 이미지로 만든 커서가 마우스를 따라 다닙니다.</p>
+  <div id="div" style="position: absolute;"><img src="https://lightbox-prod.imgix.net/images/uploads/1600126646614-lxl-spongebob-squarepants-s11-cc2.jpg" alt="" width="30px" height="30px"></div>
+</body>
+  <script>
+    const div = document.getElementById("div");
+    div.style.cursor = "none";
+    document.onmousemove = function(event) {
+      div.style.left = `${event.x}px`;
+      div.style.top = `${event.y}px`;
+    }
+  </script>
+</html>

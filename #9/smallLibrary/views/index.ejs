@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="kr">
+    <%- include("./partials/head.ejs") %>
+    <body>
+        <%- include("./partials/nav.ejs") %>
+        <div class="books content">
+            <h2>소장 도서 정보</h2>
+            <% if (books.length > 0) { %>
+                <table border="1" style="border-collapse: collapse;">
+                <tr> <th>제목</th> <th>저자</th> <th>책 상세 정보</th></tr>
+               <% books.forEach(book =>{ %>
+                    <tr>
+                    <td class="title"><%= book.title %></td>
+                    <td class="author"> <%= book.author.join(",") %></td>
+                    <td class="link">
+                        <a href="/books/<%= book._id %>">
+                            <img src="https://img.flaticon.com/icons/png/512/61/61088.png?size=1200x630f&pad=10,10,10,10&ext=png&bg=FFFFFFFF"
+                            alt="돋보기 아이콘"
+                            width="50px">
+                        </a>
+                    </td>
+                    </tr>
+                <% }) %>
+                </table>
+            <% } else { %>
+                <p>현재 소장하고 있는 책이 없습니다.</p>
+            <% } %>
+        </div>
+        <%- include("./partials/footer.ejs") %>
+    </body>
+</html>

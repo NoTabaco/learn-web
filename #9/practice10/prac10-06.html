@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setInterval() & clearInterval()</title>
+</head>
+<style>
+    #time__container {
+        border: 1px solid gray;
+        background-color: aliceblue;
+        width: 125px;
+    }
+</style>
+<body onload="printDate()">
+  <h3>div 태그에 시계 만들기</h3>
+  <span>시계를 클릭하면 시계가 멈추고 다시 클릭하면 가기 시작한다.</span>
+  <hr>
+  <div id="time__container"></div>
+</body>
+<script>
+    function printDate(){
+      const div = document.getElementById("time__container");
+      let isInterval = true;
+      const now = new Date();
+      const hours = now.getHours();
+      const minutes = now.getMinutes();
+      const seconds = now.getSeconds();
+      if(hours < 12){
+        div.innerHTML =  `<div id="time">오전 ${hours}:${("0" + minutes).slice(-2)}:${("0" + seconds).slice(-2)}</div>`;
+      } else {
+        div.innerHTML =  `<div id="time">오후 ${hours - 12}:${("0" + minutes).slice(-2)}:${("0" + seconds).slice(-2)}</div>`;
+      }
+      const timeDiv = document.getElementById("time");
+      timeDiv.addEventListener("click", function(){
+        if(isInterval){
+            clearInterval(startTimer);
+            timeDiv.style.color = "gray";
+            isInterval = false;
+        } else {
+            startTimer = setInterval("printDate()", 1000);
+            timeDiv.style.color = "black";
+            isInterval = true;
+        }
+      });
+      }
+      let startTimer = setInterval("printDate()", 1000);
+</script>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마우스 클릭 연습</title>
+    <style>
+        #div__container {
+            /* Internet Explorer does not support grid layout */
+            display: grid;
+            grid-template-rows: repeat(10, 50px);
+            grid-template-columns: repeat(10, 50px);
+            max-width: 500px;
+            border-top: 1px solid DodgerBlue;
+            border-left: 1px solid DodgerBlue;
+        }
+    </style>
+    <script>
+        const imgFile = "https://lightbox-prod.imgix.net/images/uploads/1600126646614-lxl-spongebob-squarepants-s11-cc2.jpg";
+        const imgPixel = 50;
+        function randomInt(){
+            return Math.floor(Math.random()*100);
+        }
+        function printImg(index){
+            document.images[index].src = imgFile
+            document.images[index].width = imgPixel;
+            document.images[index].height = imgPixel;
+            if(document.images[index].onclick == null){
+                document.images[index].style.visibility = "visible";
+                document.images[index].onclick = function (){
+                    changeImg(this);
+                }  
+            }
+        }
+        function init(){
+            const index = randomInt();
+            printImg(index);
+        }
+        function changeImg(object){
+            object.src = "";
+            object.onclick = null;
+            object.onerror = function (){
+                this.style.visibility = "hidden";
+            }  
+            const changeIndex = randomInt();
+            printImg(changeIndex); 
+        }
+    </script>
+</head>
+<body onload="init()">
+  <h3>마우스 클릭 연습</h3>
+  <hr>
+  <div id="div__container">
+      <script>
+          for(let i = 0; i < 100; i++){
+            document.write(`<div style="border-bottom: 1px solid DodgerBlue; border-right: 1px solid DodgerBlue;"><img src="" onclick="changeImg(this)"/></div>`);
+          }
+      </script>
+  </div>
+</body>
+</html>

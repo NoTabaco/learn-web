@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>월화수목금토일</title>
+    <script>
+        function printDate(date){
+            if(date === "월" || date === "화" || date === "수" || date === "목"){
+                if(date === "월" || date === "목") {
+                    document.write(date + "은 출근");
+                    return;
+                } else {
+                    document.write(date + "는 출근");
+                    return;  
+                }
+            } else if(date === "금" || date === "토" || date === "일") {
+                if(date === "금" || date === "일"){
+                    document.write(date + "은 휴일");
+                    return;  
+                } else {
+                    document.write(date + "는 휴일");
+                    return;      
+                }
+            } else {
+                    document.write("입력 오류입니다.");
+                    return;   
+            } 
+        }
+    </script>
+</head>
+<body>
+  <h3>월화수목금토일</h3>
+  <hr>
+  <script>
+     const date = prompt("월화수목금토일 중에서 입력하세요", "");
+     printDate(date);
+  </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="kr">
+    <%- include("./partials/head.ejs") %>
+    <body>
+        <%- include("./partials/nav.ejs") %>
+        <div class="details content">
+            <h2> 도서 상세 정보</h2>
+            <p> 제목: <%= book.title %> </p>
+            <p> 저자: <%= book.author.join(",") %></p>
+            <p> 요약: <%= book.summary %></p>
+            <a class="delete" data-doc="<%= book._id %>"> 삭제하기</a>
+        </div>
+        <%- include("./partials/footer.ejs") %>
+        <script>
+            const a = document.querySelector("a.delete");
+            a.addEventListener('click', (e) => {
+                const endpoint=`/books/${a.dataset.doc}`;
+                fetch(endpoint, {
+                    method: 'DELETE'
+                })
+                    // get json from server which a has redirection route
+                .then(result => result.json())
+                .then(data=> window.location=data.redirect)
+                .catch(err => {
+                    console.log(err);
+                });
+            });
+        </script>
+    </body>
+</html>

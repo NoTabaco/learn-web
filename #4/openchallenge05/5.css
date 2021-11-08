@@ -1,0 +1,47 @@
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0px;
+}
+/* In the example, removed display because it is not in display state */
+audio {
+    display: none;
+}
+header { 
+    background: #F0E68C;
+    padding-bottom: 15px;
+    flex-grow: 1;
+}
+header h1 {
+    margin-top: 0px;
+    text-align: center;
+}
+.nav__section__container {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 2;
+}
+nav, section {
+    padding-bottom: 35px;
+}
+nav {
+    flex-basis: 400px;
+    background: orange;
+    flex-grow: 1;
+}
+section {
+    flex-grow: 2;
+    background: #ADD8E6;
+}
+footer {
+    flex-grow: 1;
+    background: #9370D8;
+}
+footer p {
+    margin: 0px;
+    padding: 18px 0px;
+}
+footer p:first-child {
+    padding-bottom: 0px;
+}
